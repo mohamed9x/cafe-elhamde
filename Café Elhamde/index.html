@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مقهى الحمد</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="welcomeView" class="welcome-section">
+    <img src="logo.png" alt="شعار المقهى" style="width:120px;" />
+    <h2>👋 مرحبًا بك في مقهى الحمد</h2>
+    <p>اختر نوع الواجهة التي تريد الدخول إليها:</p>
+    <button onclick="enterClient()" class="btn btn-info">☕ زبون</button>
+    <button onclick="enterAdmin()" class="btn btn-warning">🛠️ موظف</button>
+  </div>
+
+  <div id="clientView" class="container hidden">
+    <h3>🧃 أطلب الآن</h3>
+    <select id="drink"> <!-- قائمة المشروبات --></select>
+    <select id="sugar">
+      <option>بدون سكر</option>
+      <option>قليل السكر</option>
+      <option>عادي</option>
+    </select>
+    <button onclick="submitOrder()" class="btn btn-primary">✔️ تأكيد الطلب</button>
+    <div id="comments"></div>
+    <p id="quote"></p>
+
+    <section id="about">
+      <img src="logo.png" alt="شعار" style="width:80px;" />
+      <h3>📖 من نحن</h3>
+      <p>مقهى الحمد تأسس في سنة 2025 ليقدم تجربة تجمع بين الذوق والدفء المغربي الأصيل.</p>
+      <h4>🌍 رؤيتنا</h4>
+      <p>أن نكون الوجهة الأولى لعشاق القهوة والمشروبات الطبيعية في المغرب والعالم العربي.</p>
+      <h4>🫱🏽‍🫲🏼 قيمنا</h4>
+      <ul>
+        <li>🤝 الترحاب الحقيقي</li>
+        <li>🎯 الجودة المستمرة</li>
+        <li>🌱 النكهات الطبيعية</li>
+        <li>❤️ الاهتمام بالتفاصيل</li>
+      </ul>
+    </section>
+  </div>
+
+  <div id="loginPanel" class="container hidden">
+    <h3>🔐 دخول الموظف</h3>
+    <input type="text" id="username" placeholder="اسم المستخدم" />
+    <input type="password" id="password" placeholder="كلمة المرور" />
+    <button onclick="checkLogin()" class="btn btn-warning">دخول</button>
+    <p id="loginMsg"></p>
+  </div>
+
+  <div id="adminView" class="container hidden">
+    <h3>📋 إدارة الطلبات</h3>
+
+    <div>
+      <label>تصفية حسب المشروب:</label>
+      <select id="filterDrink" onchange="updateOrdersTable()"></select>
+
+      <label>حسب الحالة:</label>
+      <select id="filterStatus" onchange="updateOrdersTable()">
+        <option value="">الكل</option>
+        <option value="قيد الانتظار">قيد الانتظار</option>
+        <option value="تم التحضير">تم التحضير</option>
+      </select>
+
+      <button onclick="exportToCSV()" class="btn btn-secondary">📤 تصدير CSV</button>
+      <button onclick="logoutAdmin()" class="btn btn-danger">🚪 خروج</button>
+    </div>
+
+    <div id="settingsPanel">
+      <input type="text" id="musicURL" placeholder="music.mp3" />
+      <button onclick="updateMusic()" class="btn btn-warning">🎵 تحديث الموسيقى</button>
+      <input type="color" id="btnColor" />
+      <button onclick="updateButtonColor()" class="btn btn-warning">🎨 تغيير لون الأزرار</button>
+    </div>
+
+    <div id="statsPanel"></div>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>المشروب</th><th>السكر</th><th>الحالة</th><th>إجراءات</th></tr>
+      </thead>
+      <tbody id="ordersTable"></tbody>
+    </table>
+  </div>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

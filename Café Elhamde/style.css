@@ -1,0 +1,32 @@
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  background-color: #f9f9f9;
+  color: #333;
+}
+.welcome-section {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('welcome-bg.jpg') center center no-repeat;
+  background-size: cover;
+  padding: 60px 20px;
+  text-align: center;
+  color: #fff;
+}
+button, select, input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.btn-primary { background-color: #ff9900; color: white;}
+.btn-secondary { background-color: #444; color: white;}
+.btn-warning { background-color: #ffc107;}
+.btn-danger { background-color: #dc3545; color: white;}
+.btn-info { background-color: #17a2b8; color: white;}
+.container { padding: 20px; max-width: 800px; margin: auto;}
+.hidden { display: none;}
+table { width: 100%; border-collapse: collapse; margin-top: 10px;}
+th, td { border: 1px solid #ccc; padding: 8px; text-align: center;}
+#quote { font-style: italic; margin-top: 10px; color: #555;}
+#about ul { text-align: right;}
